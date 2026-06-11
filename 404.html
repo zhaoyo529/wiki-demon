@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>找不到頁面 - Wakipedia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="wiki-body">
+  <header class="wiki-header">
+    <div class="header-left">
+      <div class="menu-toggle">☰</div>
+      <a href="index.html" class="logo-area" style="gap:8px; align-items:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50">
+          <defs>
+            <radialGradient id="rg2" cx="36%" cy="30%" r="68%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="50%" stop-color="#ededed"/>
+              <stop offset="100%" stop-color="#a8a8a8"/>
+            </radialGradient>
+            <clipPath id="sc2"><circle cx="25" cy="25" r="23.5"/></clipPath>
+          </defs>
+          <circle cx="25" cy="25" r="23.5" fill="url(#rg2)" stroke="#888" stroke-width="0.8"/>
+          <g clip-path="url(#sc2)" fill="none" stroke="#666" stroke-width="0.7">
+            <path d="M 1,17 L 14.5,17 Q 17.5,13 20.5,17 L 49,17"/>
+            <path d="M 1,33 L 27.5,33 Q 30.5,37 33.5,33 L 49,33"/>
+            <path d="M 17,1 L 17,27.5 Q 13,30.5 17,33.5 L 17,49"/>
+            <path d="M 33,1 L 33,14.5 Q 37,17.5 33,20.5 L 33,49"/>
+          </g>
+          <g clip-path="url(#sc2)" font-family="'Noto Serif TC',Georgia,serif" fill="#333" font-size="8.5">
+            <text x="5"  y="14">W</text><text x="20" y="13">文</text><text x="35" y="14">W</text>
+            <text x="3.5" y="27">ω</text><text x="20" y="26">基</text><text x="35" y="27">A</text>
+            <text x="5"  y="43">き</text><text x="20" y="43">維</text><text x="35" y="43">W</text>
+          </g>
+        </svg>
+        <span class="logo-text" style="font-family:'Linux Libertine','Linux Libertine O',Georgia,'Times New Roman',serif;font-weight:normal;font-size:19px;letter-spacing:0.5px;color:#000;">Wakipedia</span>
+      </a>
+    </div>
+    <div class="header-center">
+      <div class="search-box">
+        <input type="text" placeholder="搜尋 Wakipedia" aria-label="搜尋">
+        <button class="search-btn">🔍</button>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="user-action">未登入</span>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <aside class="wiki-sidebar">
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="index.html">首頁</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="wiki-content">
+      <article class="article-body" style="padding-top: 40px;">
+        <!-- 404 圖示 -->
+        <div style="text-align:center; margin-bottom: 32px;">
+          <div style="font-size: 72px; line-height: 1; margin-bottom: 12px; opacity: 0.3;">🧩</div>
+          <div style="font-size: 80px; font-weight: bold; color: #a2a9b1; font-family: 'Noto Serif TC', serif; letter-spacing: -2px;">404</div>
+        </div>
+
+        <h1 id="firstHeading" class="firstHeading">找不到頁面</h1>
+        <div class="siteSub">來自 Wakipedia，自由的百科全書</div>
+
+        <div class="mw-parser-output" style="margin-top: 24px;">
+          <div style="border: 1px solid #a2a9b1; background: #f8f9fa; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; font-family: 'Noto Sans TC', sans-serif; display: flex; gap: 10px; align-items: flex-start;">
+            <span style="font-size: 18px;">⚠️</span>
+            <span>Wakipedia 沒有您所尋找的頁面。此頁面可能已被移除、更名或從未存在。</span>
+          </div>
+
+          <p>您可以嘗試以下操作：</p>
+          <ul style="margin-left: 24px; margin-bottom: 20px; font-family: 'Noto Serif TC', serif; font-size: 15px; line-height: 2;">
+            <li>返回 <a href="index.html">Wakipedia 首頁</a></li>
+            <li>使用搜尋欄搜尋相關條目</li>
+            <li><a href="javascript:history.back()">← 返回上一頁</a></li>
+          </ul>
+
+          <hr>
+          <p style="font-size: 13px; color: #70757a; font-family: 'Noto Sans TC', sans-serif;">
+            HTTP 狀態碼：<strong>404 Not Found</strong><br>
+            要求路徑：<code id="req-path"></code>
+          </p>
+        </div>
+      </article>
+
+      <footer class="wiki-footer">
+        <ul class="footer-info">
+          <li>本頁面最後修改於 — （頁面不存在）</li>
+          <li>本站的文字內容採用創用CC 姓名標示-相同方式分享授權。</li>
+        </ul>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // 顯示請求路徑
+    document.getElementById('req-path').textContent = document.referrer
+      ? new URL(document.referrer).pathname
+      : '/unknown';
+  </script>
+</body>
+</html>

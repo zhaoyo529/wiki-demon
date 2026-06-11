@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>waki demon - 自由的百科全書</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="wiki-body corrupted">
+  <!-- 全螢幕隨機雜訊畫布 -->
+  <canvas id="noise-canvas"></canvas>
+
+  <!-- 頂部導覽列 (受感染版本) -->
+  <header class="wiki-header corrupted">
+    <div class="header-left">
+      <div class="menu-toggle" style="color: #888;">☰</div>
+      <a href="index.html" target="_blank" rel="noopener noreferrer" class="logo-area" style="color: #ff4d4f;">
+        <span class="logo-symbol" style="animation: icon-glitch 2s infinite;">😈</span>
+        <span class="logo-text glitch-text" data-text="Wa̸k̸i̷p̵e̵d̸i̶a">Wa̸k̸i̷p̵e̵d̸i̶a</span>
+      </a>
+    </div>
+    <div class="header-center">
+      <div id="demon-search-box" class="search-box" style="border-color: #555; background-color: #222;">
+        <input type="text" id="demon-search-input" placeholder="搜尋遭污染的條目..." style="background: none; color: #fff;" disabled autocomplete="off">
+        <button id="demon-search-btn" class="search-btn" style="background: #333; border-color: #555; color: #888;">🔍</button>
+      </div>
+      <div id="search-error-msg" style="color: #ff4d4f; font-size: 11px; margin-top: 4px; display: none; text-shadow: 0 0 4px rgba(255,0,0,0.5); font-family: 'Noto Sans TC', sans-serif;">查無此人存檔，或存取權限不足...</div>
+    </div>
+    <div class="header-right" style="color: #888;">
+      <span class="user-action">W_DEMON_GUEST</span>
+      <span class="user-action sep">|</span>
+      <span class="user-action" style="color: #ff4d4f; text-shadow: 0 0 5px rgba(255,0,0,0.5);">☠ 連線已遭攔截</span>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- 左側導覽列 (受感染版本) -->
+    <aside class="wiki-sidebar corrupted">
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="index.html" target="_blank" rel="noopener noreferrer" style="color: #888;">← 返回安全區域</a></li>
+          <li><span style="color: #555; text-decoration: line-through;">隨機條目</span></li>
+          <li><span style="color: #555; text-decoration: line-through;">關於 Wakipedia</span></li>
+          <li><span style="color: #555; text-decoration: line-through;">聯絡我們</span></li>
+        </ul>
+        <hr style="border-color: #333;">
+        <div class="sidebar-title" style="color: #777;">警告</div>
+        <div style="font-size: 11px; color: #ff4d4f; padding: 4px; border: 1px solid #520303; background: #200505; border-radius: 2px; margin-bottom: 12px;">
+          偵測到大量資料寫入異常。本頁面內容處於不穩定狀態。
+        </div>
+        <hr style="border-color: #333;">
+        <div class="sidebar-title" style="color: #777;">開發者模式</div>
+        <ul>
+          <li><a href="#" onclick="localStorage.clear(); alert('遊戲進度已重設！所有權限與狀態已清空。'); location.reload(); return false;" style="color: #ff4d4f; font-weight: bold; text-decoration: none;">重設遊戲進度</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- 主內容區 (受感染版本) -->
+    <main class="wiki-content corrupted">
+      <!-- 頂部頁籤 -->
+      <div class="content-tabs" style="border-color: #444;">
+        <div class="left-tabs">
+          <button class="tab-btn active" style="color: #fff; background-color: #1a1a1a; border-color: #444; border-bottom-color: #1a1a1a;">條目</button>
+          <button class="tab-btn" style="color: #ff4d4f;" onclick="alert('討論頁已被 waki demon 永久封印！')">討論 (已鎖定)</button>
+        </div>
+        <div class="right-tabs">
+          <button class="tab-btn active" style="color: #fff; background-color: #1a1a1a; border-color: #444; border-bottom-color: #1a1a1a;">閱讀</button>
+          <button class="tab-btn" style="color: #555;" disabled>編輯</button>
+          <button class="tab-btn" style="color: #555;" disabled>檢視歷史</button>
+        </div>
+      </div>
+
+      <!-- 條目內容 -->
+      <article class="article-body">
+        <h1 id="firstHeading" class="firstHeading" style="color: #ff4d4f; border-color: #800000; font-family: 'Noto Serif TC', serif; text-shadow: 0 0 8px rgba(255, 77, 79, 0.4);">
+          waki demon (維基惡魔)
+        </h1>
+        <div class="siteSub" style="color: #888;">來自已被寄生的 Wakipedia，異常的百科全書</div>
+        
+        <div class="mw-parser-output">
+          <!-- 右側資訊框 InfoBox (受感染版本) -->
+          <table class="infobox" style="background-color: #262626; border-color: #821010; color: #e8e8e8;">
+            <tbody>
+              <tr>
+                <th colspan="2" class="infobox-title" style="background-color: #5c0000; color: #fff; border-color: #821010;">waki demon<br>【維基惡魔】</th>
+              </tr>
+              <tr>
+                <td colspan="2" class="infobox-image" style="background-color: #111; border-color: #821010; position: relative;">
+                  <!-- 惡魔核心圖示 -->
+                  <div class="demon-core" style="font-size: 60px; line-height: 1; padding: 10px 0; animation: core-pulse 2s infinite alternate;">👁️</div>
+                  <div style="font-size: 10px; color: #ff4d4f; margin-top: 4px;">監控中...</div>
+                </td>
+              </tr>
+              <tr>
+                <th style="background-color: #333; border-color: #821010;">分類</th>
+                <td style="border-color: #821010;">寄生型數位實體、知識蠶食者</td>
+              </tr>
+              <tr>
+                <th style="background-color: #333; border-color: #821010;">首次發現</th>
+                <td style="border-color: #821010;">2026 年 6 月</td>
+              </tr>
+              <tr>
+                <th style="background-color: #333; border-color: #821010;">威脅等級</th>
+                <td style="border-color: #821010; color: #ff4d4f; font-weight: bold; text-shadow: 0 0 5px rgba(255,0,0,0.5);">等級 V (滅絕級)</td>
+              </tr>
+              <tr>
+                <th style="background-color: #333; border-color: #821010;">目前狀態</th>
+                <td style="border-color: #821010; color: #ffcd3c;">正在蠶食條目資訊...</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>waki demon</strong>（中文名：<strong>維基惡魔</strong>，又稱<strong>百科寄生蟲</strong>）是一個新興的、高度危險的數位寄生實體。它在 2026 年 6 月被發現寄生於 <span style="text-decoration: line-through; color: #555;">Wakipedia</span> 上。該實體以網站上的「知識與邏輯」為食，會將正常的百科條目資料進行加密、刪除或進行系統性的重寫。</p>
+          
+          <p class="glitched-paragraph">
+            當 waki demon 入侵一個頁面時，該頁面會出現異常的彈窗廣告，這其實是它用來麻痺管理系統與使用者的保護色。一旦使用者關閉彈窗，waki demon 就會被短暫激怒，並在其寄生點露出馬腳。
+          </p>
+
+          <!-- 目錄 -->
+          <div class="toc" style="background-color: #222; border-color: #444; color: #ddd;">
+            <div class="toctitle">
+              <h2 style="color: #ff4d4f;">目錄</h2>
+            </div>
+            <ul>
+              <li><a href="#behavior" style="color: #ff7875;">1 蠶食行為模式</a></li>
+              <li><a href="#weakness" style="color: #ff7875;">2 潛在弱點</a></li>
+            </ul>
+          </div>
+
+          <h2 id="behavior" style="color: #ff4d4f; border-color: #800000;">蠶食行為模式</h2>
+          <hr style="border-color: #800000;">
+          <p>該實體對 Wakipedia 的蠶食分為三個階段：</p>
+          <ol style="margin-left: 20px; margin-bottom: 16px; font-family: 'Noto Serif TC', serif; font-size: 15px;">
+            <li style="margin-bottom: 8px;"><strong>干擾期</strong>：產生無意義的網路廣告與重新導向，降低使用者的警覺性。</li>
+            <li style="margin-bottom: 8px;"><strong>同化期</strong>：將正文內容替換為亂碼或神祕的符號。本頁面已進入此階段，部分正文已被感染。</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #ff4d4f;">完全重寫</strong>：條目原本的知識被完全清除，成為 waki demon 的巢穴。</li>
+          </ol>
+
+          <h2 id="weakness" style="color: #ff4d4f; border-color: #800000;">潛在弱點</h2>
+          <hr style="border-color: #800000;">
+          <p>根據 Wakipedia 安全小組的分析，waki demon 雖然強大，但它的存在基於精密的邏輯鏈條。要將其擊敗，玩家必須沿著它殘留的數位軌跡，逐步追蹤並破解它在系統深處所設下的<strong>加密金鑰矩陣</strong>。</p>
+          <p>金鑰矩陣的層數尚未確定，但核心演算法已被部分逆向——<em>沿著線索走，答案自然浮現。</em></p>
+
+          <h2 id="next-clue" style="color: #ffcd3c; border-color: #805b00;">wakidemon 研發計畫</h2>
+          <hr style="border-color: #805b00;">
+          <p>
+            <a href="project_log.html" target="_blank" rel="noopener noreferrer" style="color: #ff7875; font-weight: bold;">【wakidemon 研發計畫 — 內部存檔文件】</a>
+          </p>
+          <p style="margin-top: 8px;">
+            <a href="wakiangel_source.html" target="_blank" rel="noopener noreferrer" style="color: #ffcd3c; font-weight: bold;">【未知外來連結】</a>
+          </p>
+
+        </div>
+      </article>
+
+      <footer class="wiki-footer" style="border-color: #444; color: #666;">
+        <ul class="footer-info">
+          <li>此頁面已被未知程序修改。原本的內容已不可考。</li>
+          <li>警告：本頁面的快取隨時可能損毀。</li>
+          <li style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed #333;">
+            <a href="project_log.html" target="_blank" rel="noopener noreferrer" style="color: #555; font-size: 12px; font-family: monospace; letter-spacing: 0.5px; text-decoration: none; transition: color 0.3s;"
+               onmouseover="this.style.color='#ff4d4f'" onmouseout="this.style.color='#555'">
+              【wakidemon研發計畫】
+            </a>
+            <span style="color: #333; font-size: 11px; margin-left: 8px; font-family: monospace;">— 內部存檔文件 / 存取權限：公開</span>
+          </li>
+        </ul>
+      </footer>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchBox = document.getElementById('demon-search-box');
+      const searchInput = document.getElementById('demon-search-input');
+      const searchBtn = document.getElementById('demon-search-btn');
+      const errorMsg = document.getElementById('search-error-msg');
+      const body = document.body;
+      const canvas = document.getElementById('noise-canvas');
+      
+      let noiseInterval = null;
+
+      function activateGlitchAndSearch() {
+        // 1. 啟用搜尋欄
+        searchInput.disabled = false;
+        searchInput.placeholder = "搜索失聯人員";
+        searchBox.classList.add('highlighted');
+        
+        // 2. 啟用按鈕
+        searchBtn.style.color = "#ff4d4f";
+        searchBtn.style.borderColor = "#ff4d4f";
+        searchBtn.style.cursor = "pointer";
+        
+        // 3. 加上雜訊與歪斜抖動效果
+        body.classList.add('glitched');
+        
+        // 4. 顯示並繪製二進位雜訊
+        canvas.style.display = 'block';
+        initNoiseCanvas();
+      }
+
+      function initNoiseCanvas() {
+        if (noiseInterval) return;
+        const ctx = canvas.getContext('2d');
+        canvas.width = 250;
+        canvas.height = 250;
+
+        function drawNoise() {
+          const w = canvas.width;
+          const h = canvas.height;
+          const imgData = ctx.createImageData(w, h);
+          const data = imgData.data;
+          for (let i = 0; i < data.length; i += 4) {
+            const val = Math.random() < 0.5 ? 0 : 255;
+            data[i] = val;       // R
+            data[i + 1] = val;   // G
+            data[i + 2] = val;   // B
+            data[i + 3] = 255;   // A
+          }
+          ctx.putImageData(imgData, 0, 0);
+        }
+
+        // 每 50 毫秒刷新一次二進位雜訊 (20fps)，效能極佳
+        noiseInterval = setInterval(drawNoise, 50);
+      }
+
+      // 檢查是否已觸發研究計畫
+      if (localStorage.getItem('researchProjectTriggered') === 'true') {
+        activateGlitchAndSearch();
+      }
+
+      // 監聽跨分頁 localStorage 變更事件，以即時啟用特效
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'researchProjectTriggered' && e.newValue === 'true') {
+          activateGlitchAndSearch();
+        }
+      });
+
+      // 搜尋提交邏輯
+      function handleSearch() {
+        const val = searchInput.value.trim();
+        if (val === "文硯程") {
+          errorMsg.style.display = 'none';
+          window.open('note.html', '_blank');
+        } else if (val !== "") {
+          errorMsg.style.display = 'block';
+          // 3秒後自動隱藏錯誤訊息
+          setTimeout(() => {
+            errorMsg.style.display = 'none';
+          }, 3000);
+        }
+      }
+
+      searchBtn.addEventListener('click', handleSearch);
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          handleSearch();
+        }
+      });
+
+      // ── 開發者快速重設：Ctrl + Shift + R ──
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+          e.preventDefault();
+          if (confirm('【開發者模式】確定要清除所有遊戲進度並重設？')) {
+            localStorage.clear();
+            alert('遊戲進度已重設！請從 index.html 重新開始。');
+            window.location.href = 'index.html';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

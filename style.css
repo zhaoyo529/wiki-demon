@@ -1,0 +1,771 @@
+/* ==========================================
+   擬真維基百科 (Wakipedia) 主題樣式
+   ========================================== */
+
+/* 全域重設與字型 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.wiki-body {
+  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #202122;
+  background-color: #f6f6f6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #0b0080;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #a2a9b1;
+  margin: 16px 0 8px 0;
+}
+
+/* 頂部導覽列 */
+.wiki-header {
+  height: 50px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #a2a9b1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-toggle {
+  font-size: 20px;
+  cursor: pointer;
+  color: #54595d;
+  padding: 4px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #000000;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logo-area:hover {
+  text-decoration: none;
+}
+
+.logo-symbol {
+  font-size: 22px;
+}
+
+.logo-text {
+  letter-spacing: -0.5px;
+}
+
+.header-center {
+  flex-grow: 1;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+.search-box {
+  display: flex;
+  border: 1px solid #a2a9b1;
+  border-radius: 2px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.search-box input {
+  border: none;
+  padding: 6px 12px;
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-btn {
+  border: none;
+  background: #f8f9fa;
+  border-left: 1px solid #a2a9b1;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: #54595d;
+}
+
+.search-btn:hover {
+  background: #eaecf0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #54595d;
+}
+
+.user-action {
+  cursor: pointer;
+}
+
+.user-action:hover {
+  color: #0645ad;
+}
+
+.user-action.bold {
+  font-weight: bold;
+  color: #202122;
+}
+
+.user-action.sep {
+  color: #eaecf0;
+  cursor: default;
+}
+
+/* 主版面配置 */
+.main-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 左側側邊欄 */
+.wiki-sidebar {
+  width: 176px;
+  padding: 16px 8px 16px 16px;
+  background-color: #f6f6f6;
+  flex-shrink: 0;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li {
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.sidebar-nav li a {
+  color: #0645ad;
+}
+
+.sidebar-nav li.active a {
+  color: #202122;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+}
+
+.sidebar-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #54595d;
+  margin: 12px 0 8px 0;
+}
+
+/* 右側主內容區 */
+.wiki-content {
+  flex-grow: 1;
+  background-color: #ffffff;
+  padding: 24px 32px;
+  border-left: 1px solid #a2a9b1;
+  min-width: 0;
+}
+
+/* 頂部頁籤 */
+.content-tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #a2a9b1;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.left-tabs, .right-tabs {
+  display: flex;
+}
+
+.tab-btn {
+  background: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #0645ad;
+}
+
+.tab-btn:hover {
+  background-color: #f8f9fa;
+}
+
+.tab-btn.active {
+  color: #202122;
+  background-color: #ffffff;
+  border-color: #a2a9b1;
+  border-bottom: 1px solid #ffffff;
+  margin-bottom: -1px;
+  cursor: default;
+}
+
+/* 條目排版與正文 */
+.article-body {
+  max-width: 900px;
+}
+
+.firstHeading {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 28px;
+  font-weight: normal;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.siteSub {
+  font-size: 12px;
+  color: #54595d;
+  margin-bottom: 16px;
+}
+
+p {
+  margin-bottom: 16px;
+  text-align: justify;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 15px;
+}
+
+/* 目錄 Box */
+.toc {
+  border: 1px solid #a2a9b1;
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  display: inline-block;
+  margin: 16px 0;
+  border-radius: 2px;
+  min-width: 180px;
+}
+
+.toctitle h2 {
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.toc ul {
+  list-style: none;
+}
+
+.toc li {
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.tocnumber {
+  color: #202122;
+  margin-right: 4px;
+}
+
+/* 右側資訊框 (InfoBox) */
+.infobox {
+  border: 1px solid #a2a9b1;
+  border-collapse: collapse;
+  background-color: #f8f9fa;
+  float: right;
+  width: 270px;
+  margin: 0 0 16px 16px;
+  font-size: 12px;
+  padding: 4px;
+}
+
+.infobox th, .infobox td {
+  border: 1px solid #a2a9b1;
+  padding: 6px 8px;
+}
+
+.infobox-title {
+  background-color: #eaecf0;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.infobox-image {
+  text-align: center;
+  padding: 16px;
+  background-color: #ffffff;
+}
+
+.temp-image {
+  font-size: 40px;
+  letter-spacing: 4px;
+}
+
+.infobox th {
+  background-color: #f2f2f2;
+  text-align: left;
+  width: 35%;
+  font-weight: bold;
+}
+
+/* 參見列表 */
+.see-also-list {
+  list-style-type: square;
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+.see-also-list li {
+  margin-bottom: 6px;
+}
+
+/* 頁尾 */
+.wiki-footer {
+  margin-top: 40px;
+  border-top: 1px solid #a2a9b1;
+  padding-top: 12px;
+  font-size: 12px;
+  color: #54595d;
+}
+
+.footer-info {
+  list-style: none;
+}
+
+.footer-info li {
+  margin-bottom: 6px;
+}
+
+/* ==========================================
+   彈窗廣告樣式 (Annoying Ad)
+   ========================================== */
+.ad-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #fffae6;
+  border: 3px solid #ff4d4f;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  border-radius: 8px;
+  z-index: 999;
+  font-family: Arial, sans-serif;
+  animation: ad-wiggle 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes ad-wiggle {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); }
+}
+
+.ad-header {
+  background-color: #ff4d4f;
+  color: #ffffff;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.ad-title {
+  font-size: 13px;
+}
+
+.ad-close-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 8px; /* 超級小 */
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 2px;
+}
+
+.ad-close-btn:hover {
+  color: #ffccc7;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.ad-body {
+  padding: 16px;
+  text-align: center;
+}
+
+.ad-promo {
+  color: #262626;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.ad-sub {
+  color: #d4380d;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.ad-click-btn {
+  background-color: #389e0d;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  animation: ad-pulse 0.8s infinite alternate;
+}
+
+@keyframes ad-pulse {
+  0% { transform: scale(1); box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
+  100% { transform: scale(1.08); box-shadow: 0 4px 12px rgba(56, 158, 13, 0.4); }
+}
+
+.ad-click-btn:hover {
+  background-color: #237804;
+}
+
+.ad-disclaimer {
+  font-size: 10px;
+  color: #8c8c8c;
+  margin-top: 10px;
+  line-height: 1.2;
+}
+
+/* ==========================================
+   隱藏線索與故障效果 (Glitch Effect)
+   ========================================== */
+.hidden-clue {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 1.5s ease, max-height 1s ease;
+  margin-bottom: 0 !important;
+}
+
+.hidden-clue.reveal {
+  opacity: 1;
+  max-height: 40px;
+  margin-bottom: 6px !important;
+}
+
+/* 故障紅光連結效果 */
+.glitch-link {
+  color: #a8071a !important; /* 紅色字 */
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  animation: text-shake 0.3s infinite alternate;
+}
+
+.glitch-link:hover {
+  text-decoration: none;
+}
+
+/* 文字微顫抖 */
+@keyframes text-shake {
+  0% { transform: translate(0, 0); text-shadow: 1px 0 0 rgba(255,0,0,0.5), -1px 0 0 rgba(0,255,255,0.5); }
+  50% { transform: translate(-0.5px, 0.5px); text-shadow: -1px 0 0 rgba(255,0,0,0.5), 1px 0 0 rgba(0,255,255,0.5); }
+  100% { transform: translate(0.5px, -0.5px); text-shadow: 1px -1px 0 rgba(255,0,0,0.5), -1px 1px 0 rgba(0,255,255,0.5); }
+}
+
+/* 頁面短暫閃爍效果 (用 JS 觸發) */
+.page-glitch-flicker {
+  animation: glitch-flicker 0.4s ease-out;
+}
+
+@keyframes glitch-flicker {
+  0% { filter: invert(0) contrast(1); opacity: 1; }
+  10% { filter: invert(0.8) contrast(1.5); opacity: 0.8; }
+  30% { filter: invert(0) contrast(1); opacity: 0.9; }
+  45% { filter: invert(0.5) hue-rotate(90deg); opacity: 0.7; }
+  60% { filter: invert(0) contrast(1); opacity: 1; }
+  75% { filter: hue-rotate(180deg) blur(1px); opacity: 0.8; }
+  100% { filter: invert(0) contrast(1); opacity: 1; }
+}
+
+/* ==========================================
+   Waki Demon 頁面專屬污染/故障樣式 (Corrupted Mode)
+   ========================================== */
+
+/* 污染背景與文字色 */
+body.wiki-body.corrupted {
+  background-color: #0f0f0f;
+  color: #c5c5c5;
+}
+
+.wiki-header.corrupted {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #5a1010;
+}
+
+.wiki-sidebar.corrupted {
+  background-color: #0f0f0f;
+  border-right: 1px solid #331111;
+}
+
+.wiki-content.corrupted {
+  background-color: #161616;
+  border-left: 1px solid #5a1010;
+  color: #d8d8d8;
+}
+
+/* 覆寫受感染頁面中的超連結 */
+.wiki-content.corrupted a {
+  color: #ff4d4f;
+  text-shadow: 0 0 2px rgba(255, 77, 79, 0.3);
+}
+
+.wiki-content.corrupted a:hover {
+  color: #ff7875;
+  text-shadow: 0 0 5px rgba(255, 77, 79, 0.8);
+}
+
+.wiki-content.corrupted a:visited {
+  color: #cf1322;
+}
+
+/* 故障條目標題 */
+.wiki-content.corrupted .firstHeading {
+  border-bottom: 1px solid #8c1d1d;
+}
+
+/* 惡魔核心脈動 */
+@keyframes core-pulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(255, 77, 79, 0.4)) contrast(1);
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 15px rgba(255, 77, 79, 0.9)) contrast(1.2);
+  }
+  100% {
+    transform: scale(1) rotate(-5deg);
+    filter: drop-shadow(0 0 2px rgba(255, 77, 79, 0.4)) contrast(1);
+  }
+}
+
+/* 惡魔圖示微小抖動 */
+@keyframes icon-glitch {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 2px) rotate(-5deg); }
+  40% { transform: translate(1px, -1px) rotate(5deg); }
+  60% { transform: translate(-1px, -2px); }
+  80% { transform: translate(2px, 1px); }
+}
+
+/* 百科 Logo 故障文字效果 */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 #ff0000;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -1px 0 #00ffff, 0 1px #ff0000;
+  clip: rect(85px, 450px, 140px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(15px, 9999px, 66px, 0); }
+  10% { clip: rect(34px, 9999px, 55px, 0); }
+  20% { clip: rect(1px, 9999px, 85px, 0); }
+  30% { clip: rect(67px, 9999px, 92px, 0); }
+  40% { clip: rect(44px, 9999px, 12px, 0); }
+  50% { clip: rect(80px, 9999px, 95px, 0); }
+  60% { clip: rect(105px, 9999px, 115px, 0); }
+  70% { clip: rect(12px, 9999px, 85px, 0); }
+  80% { clip: rect(90px, 9999px, 130px, 0); }
+  90% { clip: rect(5px, 9999px, 50px, 0); }
+  100% { clip: rect(60px, 9999px, 110px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 105px, 0); }
+  10% { clip: rect(5px, 9999px, 35px, 0); }
+  20% { clip: rect(98px, 9999px, 120px, 0); }
+  30% { clip: rect(45px, 9999px, 15px, 0); }
+  40% { clip: rect(12px, 9999px, 55px, 0); }
+  50% { clip: rect(95px, 9999px, 80px, 0); }
+  60% { clip: rect(15px, 9999px, 95px, 0); }
+  70% { clip: rect(112px, 9999px, 12px, 0); }
+  80% { clip: rect(30px, 9999px, 75px, 0); }
+  90% { clip: rect(85px, 9999px, 140px, 0); }
+  100% { clip: rect(25px, 9999px, 90px, 0); }
+}
+
+/* 被蠶食段落微抖動效果 */
+.glitched-paragraph {
+  animation: para-glitch 4s infinite;
+}
+
+@keyframes para-glitch {
+  0%, 95%, 100% { transform: skew(0deg); filter: blur(0); }
+  96% { transform: skew(3deg); filter: blur(0.5px); color: #ff4d4f; }
+  97% { transform: skew(-3deg); filter: blur(0); color: inherit; }
+  98% { transform: skew(0deg); filter: blur(1px); color: #00ffff; }
+  99% { transform: skew(1deg); filter: blur(0); color: inherit; }
+}
+
+/* ==========================================
+   新增：失聯人員與雜訊搜尋欄樣式
+   ========================================== */
+
+/* 隱蔽姓名遮罩 */
+.masked-name {
+  background-color: #202122; /* 配合文字的暗灰色 */
+  color: #202122;
+  padding: 0 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  user-select: text;
+  transition: background-color 0.3s, color 0.3s, text-shadow 0.3s;
+  font-family: monospace;
+}
+
+/* 當被游標選取 (拖曳反白) 時顯示真實內容 */
+.masked-name::selection {
+  background-color: #ff4d4f !important;
+  color: #ffffff !important;
+}
+.masked-name::-moz-selection {
+  background-color: #ff4d4f !important;
+  color: #ffffff !important;
+}
+
+/* 長按時由 JS 觸發的 revealed 顯現狀態 */
+.masked-name.revealed {
+  background-color: transparent !important;
+  color: #ff4d4f !important;
+  text-shadow: 0 0 8px rgba(255, 77, 79, 0.9);
+  font-weight: bold;
+}
+
+/* 啟動後的惡魔搜尋欄 (霓虹呼吸燈) */
+.search-box.highlighted {
+  border-color: #ff4d4f !important;
+  box-shadow: 0 0 10px rgba(255, 77, 79, 0.8), inset 0 0 5px rgba(255, 77, 79, 0.4) !important;
+  animation: search-glow-pulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes search-glow-pulse {
+  0% { box-shadow: 0 0 4px rgba(255, 77, 79, 0.4); }
+  100% { box-shadow: 0 0 15px rgba(255, 77, 79, 1); }
+}
+
+.search-box.highlighted input::placeholder {
+  color: #ff4d4f !important;
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(255, 77, 79, 0.5);
+  animation: placeholder-blink 2s infinite;
+}
+
+@keyframes placeholder-blink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* 惡魔介面啟動後加上全螢幕 CRT 掃描線與週期性歪斜抖動 */
+body.wiki-body.corrupted.glitched {
+  animation: screen-distort 5s infinite;
+}
+
+@keyframes screen-distort {
+  0% { transform: translate(0, 0) skew(0deg); }
+  0.5% { transform: translate(2px, -1px) skew(1deg); }
+  1% { transform: translate(-1px, 1px) skew(-1deg); }
+  1.5% { transform: translate(0, 0) skew(0deg); }
+  98% { transform: translate(0, 0) skew(0deg); }
+  98.5% { transform: translate(-2px, 1px) skew(-1deg); }
+  99% { transform: translate(1px, -1px) skew(1deg); }
+  100% { transform: translate(0, 0) skew(0deg); }
+}
+
+/* CRT 掃描線 */
+body.wiki-body.corrupted.glitched::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 9998;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* 顆粒雜訊覆蓋畫布 */
+#noise-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  display: none;
+}
+
+

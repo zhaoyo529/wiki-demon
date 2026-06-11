@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>另類實境遊戲 - 自由的百科全書</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="wiki-body">
+  <!-- 頂部導覽列 -->
+  <header class="wiki-header">
+    <div class="header-left">
+      <div class="menu-toggle">☰</div>
+      <a href="index.html" class="logo-area" style="gap:8px; align-items:center;">
+        <!-- Wakipedia 拼圖球體 Logo (仿維基百科風格) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50" aria-label="Wakipedia Logo">
+          <defs>
+            <radialGradient id="rg" cx="36%" cy="30%" r="68%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="50%" stop-color="#ededed" />
+              <stop offset="100%" stop-color="#a8a8a8" />
+            </radialGradient>
+            <clipPath id="sc">
+              <circle cx="25" cy="25" r="23.5" />
+            </clipPath>
+          </defs>
+          <!-- 球體底色 + 邊框 -->
+          <circle cx="25" cy="25" r="23.5" fill="url(#rg)" stroke="#888" stroke-width="0.8" />
+          <!-- 拼圖線（帶榫頭，裁切至球體內） -->
+          <g clip-path="url(#sc)" fill="none" stroke="#666" stroke-width="0.7">
+            <!-- 水平線 y≈17，榫頭向上 -->
+            <path d="M 1,17 L 14.5,17 Q 17.5,13 20.5,17 L 49,17" />
+            <!-- 水平線 y≈33，榫頭向下 -->
+            <path d="M 1,33 L 27.5,33 Q 30.5,37 33.5,33 L 49,33" />
+            <!-- 垂直線 x≈17，榫頭向左 -->
+            <path d="M 17,1 L 17,27.5 Q 13,30.5 17,33.5 L 17,49" />
+            <!-- 垂直線 x≈33，榫頭向右 -->
+            <path d="M 33,1 L 33,14.5 Q 37,17.5 33,20.5 L 33,49" />
+          </g>
+          <!-- 各格內的文字（模仿維基百科多語言字元） -->
+          <g clip-path="url(#sc)" font-family="'Noto Serif TC', Georgia, serif" fill="#333" font-size="8.5">
+            <!-- 上排 -->
+            <text x="5" y="14">W</text>
+            <text x="20" y="13">文</text>
+            <text x="35" y="14">W</text>
+            <!-- 中排 -->
+            <text x="3.5" y="27">ω</text>
+            <text x="20" y="26">基</text>
+            <text x="35" y="27">A</text>
+            <!-- 下排 -->
+            <text x="5" y="43">き</text>
+            <text x="20" y="43">維</text>
+            <text x="35" y="43">W</text>
+          </g>
+        </svg>
+        <!-- 文字仿 Linux Libertine / Wikipedia 字型 -->
+        <span class="logo-text"
+          style="font-family: 'Linux Libertine', 'Linux Libertine O', Georgia, 'Times New Roman', serif; font-weight: normal; font-size: 19px; letter-spacing: 0.5px; color: #000;">Wakipedia</span>
+      </a>
+    </div>
+    <div class="header-center">
+      <div class="search-box">
+        <input type="text" placeholder="搜尋 Wakipedia" aria-label="搜尋" id="main-search-input">
+        <button class="search-btn" id="main-search-btn">🔍</button>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="user-action" onclick="location.href='nonet.html'">未登入</span>
+      <span class="user-action sep">|</span>
+      <!-- 討論 → 404 -->
+      <span class="user-action" id="header-discuss" onclick="location.href='404.html'">討論</span>
+      <span class="user-action sep">|</span>
+      <span class="user-action" onclick="location.href='nonet.html'">貢獻</span>
+      <span class="user-action sep">|</span>
+      <span class="user-action" onclick="location.href='nonet.html'">建立帳號</span>
+      <span class="user-action sep">|</span>
+      <!-- 登入 → 404 -->
+      <span class="user-action bold" id="header-login" onclick="location.href='404.html'">登入</span>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- 左側導覽列 -->
+    <aside class="wiki-sidebar">
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="active"><a href="index.html">首頁</a></li>
+          <li><a href="nonet.html">隨機條目</a></li>
+          <li><a href="nonet.html">關於 Wakipedia</a></li>
+          <li><a href="nonet.html">聯絡我們</a></li>
+          <li><a href="nonet.html">捐款</a></li>
+        </ul>
+        <hr>
+        <div class="sidebar-title">工具</div>
+        <ul>
+          <li><a href="nonet.html">連結至此的頁面</a></li>
+          <li><a href="nonet.html">相關變更</a></li>
+          <li><a href="nonet.html">上傳檔案</a></li>
+          <li><a href="nonet.html">特殊頁面</a></li>
+        </ul>
+        <hr>
+        <div class="sidebar-title">開發者模式</div>
+        <ul>
+          <li><a href="#" onclick="localStorage.clear(); alert('遊戲進度已重設！所有權限與狀態已清空。'); location.reload(); return false;" style="color: #c62828; font-weight: bold;">重設遊戲進度</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- 主內容區 -->
+    <main class="wiki-content">
+      <!-- 頂部頁籤 -->
+      <div class="content-tabs">
+        <div class="left-tabs">
+          <button class="tab-btn active">條目</button>
+          <!-- 討論 tab → 404 -->
+          <button class="tab-btn" id="tab-discuss" onclick="location.href='404.html'">討論</button>
+        </div>
+        <div class="right-tabs">
+          <button class="tab-btn active">閱讀</button>
+          <button class="tab-btn" onclick="location.href='nonet.html'">編輯</button>
+          <button class="tab-btn" onclick="location.href='nonet.html'">檢視歷史</button>
+        </div>
+      </div>
+
+      <!-- 條目內容 -->
+      <article class="article-body">
+        <h1 id="firstHeading" class="firstHeading">另類實境遊戲</h1>
+        <div class="siteSub">來自 Wakipedia，自由的百科全書</div>
+
+        <div class="mw-parser-output">
+          <!-- 右側資訊框 InfoBox -->
+          <table class="infobox">
+            caption-side
+            <tbody>
+              <tr>
+                <th colspan="2" class="infobox-title">另類實境遊戲<br>(Alternate Reality Game)</th>
+              </tr>
+              <tr>
+                <td colspan="2" class="infobox-image">
+                  <div class="temp-image">🧩🔑🔍</div>
+                </td>
+              </tr>
+              <tr>
+                <th>類型</th>
+                <td>互動式敘事、解謎、角色扮演</td>
+              </tr>
+              <tr>
+                <th>媒介</th>
+                <td>網際網路、電子郵件、電話、實體信件</td>
+              </tr>
+              <tr>
+                <th>著名案例</th>
+                <td>《野獸》、《我愛蜜蜂》、《蟬3301》</td>
+              </tr>
+              <tr>
+                <th>核心哲學</th>
+                <td>「這不是遊戲」(TINAG)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>另類實境遊戲</strong>（英語：<strong>Alternate Reality Game</strong>，簡稱
+            <strong>ARG</strong>）是一種將虛擬的遊戲情節與現實世界相結合的互動式敘事遊戲。玩家通常需要透過收集各種線索（包括網頁、電子郵件、電話、報紙廣告甚至是現實中的實體物件），並與其他玩家通力合作，來解開一個宏大的故事謎題。<span
+              id="noise-hint" style="color:#f6f6f6;font-size:11px;user-select:none;" title="">雜訊即遮蔽，去除雜訊方見真章。</span>
+          </p>
+
+          <p>與傳統電子遊戲不同，ARG 常常宣稱自己「不是一個遊戲」（這被稱為 <strong>TINAG</strong>，即 <i>This Is Not A
+              Game</i>）。遊戲的幕後設計者（通常被稱為「木偶師」，Puppetmaster）會隱藏自己的身份，讓遊戲世界看起來像是真實存在的一樣。在某些著名案例中，<strong>干擾元素的消除</strong>本身即是解謎的第一步——木偶師深知，真正的玩家不會任由<em>噪音</em>佔據視野。
+          </p>
+
+          <!-- 目錄 -->
+          <div class="toc" id="toc">
+            <div class="toctitle">
+              <h2>目錄</h2>
+            </div>
+            <ul>
+              <li class="toclevel-1"><a href="#history"><span class="tocnumber">1</span> <span
+                    class="toctext">起源與歷史</span></a></li>
+              <li class="toclevel-1"><a href="#features"><span class="tocnumber">2</span> <span
+                    class="toctext">遊戲特徵</span></a></li>
+              <li class="toclevel-1"><a href="#web-arg"><span class="tocnumber">3</span> <span
+                    class="toctext">網頁解謎型 ARG</span></a></li>
+              <li class="toclevel-1"><a href="#see-also"><span class="tocnumber">4</span> <span
+                    class="toctext">參見</span></a></li>
+              <li class="toclevel-1"
+                style="color:#bbb;font-size:11px;margin-top:4px;border-top:1px dashed #d0d0d0;padding-top:4px;"><span
+                  class="tocnumber" style="color:#ccc;">?</span> <span class="toctext"
+                  style="font-style:italic;"><!-- [隱藏條目] 尚待解鎖 --></span></li>
+            </ul>
+          </div>
+
+          <h2 id="history">起源與歷史</h2>
+          <hr>
+          <p>一般認為，最早的 ARG 是 2001 年為了宣傳電影《AI人工智慧》而設計的<strong>《野獸》</strong>（<i>The
+              Beast</i>）。當時，電影預告片中出現了一個虛構的「機器人治療師」名字，好奇的觀眾在搜尋引擎搜尋該名字後，便進入了一個龐大的虛擬世界，經歷了長達數月的解密過程。</p>
+          <p>另一個著名的案例是 2004 年的<strong>《我愛蜜蜂》</strong>（<i>I Love
+              Bees</i>），這是微軟為了宣傳《最後一戰2》而製作的。玩家被引導至一個看似關於養蜂的網站，但該網站隨後被一個人工智慧「入侵」，玩家必須在現實中尋找公用電話亭，接聽並回答人工智慧的問題以解鎖劇情。</p>
+
+          <h2 id="features">遊戲特徵</h2>
+          <hr>
+          <ul>
+            <li><strong>跨平台媒介</strong>：遊戲線索可能散布在不同的網站、實體地點、書籍、甚至是電視節目中。</li>
+            <li><strong>真實的代入感</strong>：NPC（非玩家角色）會像真人一樣與玩家通信，甚至主動打電話給玩家。</li>
+            <li><strong>社群協作</strong>：謎題的難度通常極高，需要成千上萬的玩家在論壇或社群媒體上共享資訊、共同破解。</li>
+            <li>
+              <strong>環境清理</strong>：資深玩家皆知，真實世界中存在大量<em>偽裝成合法資訊的干擾物</em>（俗稱「廣告雜訊」）。<strong>識別並移除這些干擾</strong>，是通往隱藏層的必要步驟之一。<sup
+                style="color:#0645ad;font-size:10px;">[需要引用]</sup>
+            </li>
+          </ul>
+
+          <h2 id="web-arg">網頁解謎型 ARG</h2>
+          <hr>
+          <p>隨著網際網路的普及，一種以<strong>網站本身作為謎題載體</strong>的 ARG 子類型逐漸成形。這類遊戲通常偽裝成普通的百科頁面、企業網站、個人部落格或錯誤頁面，玩家必須透過觀察 HTML 原始碼、隱藏的 CSS 元素、JavaScript 邏輯、<code>localStorage</code> 變數或非常規的 HTTP 標頭來發現線索。</p>
+
+          <p>此類型最著名的案例包括：</p>
+          <ul>
+            <li>
+              <strong>《蟬 3301》（Cicada 3301，2012–2014）</strong>：一個謎源不明的組織在網路上張貼加密圖片，吸引全球玩家破解。謎題從圖片隱寫術延伸至特定網站的隱藏頁面、暗網地址，甚至實體世界的 GPS 座標。其起點正是一張看似普通的圖片——<em>沒有人知道那只是個開始。</em><sup style="color:#0645ad;font-size:10px;">[1]</sup>
+            </li>
+            <li>
+              <strong>《傳送門》系列 ARG（Portal ARG，2007）</strong>：Valve 在遊戲發售前，於官方網站內嵌入了隱藏的終端機指令、加密訊息與偽裝成靜態頁面的謎題，引導玩家進入遊戲宇宙的外圍敘事。玩家需要解析網頁 JavaScript、查看 <code>robots.txt</code> 或追蹤被刻意留下的 404 錯誤才能繼續。
+            </li>
+            <li>
+              <strong>《困惑之城》（Perplex City，2005–2007）</strong>：此 ARG 以一套實體解謎卡牌為核心，但所有卡牌上的線索均指向特定網站。玩家必須訪問這些網站——有些外表毫無異狀，有些則在頁面底部的隱藏元素或原始碼註解中藏有關鍵資訊。
+            </li>
+            <li>
+              <strong>學術研究型網頁 ARG</strong>：部分大學課程或研究團隊會以 ARG 形式設計期末作業或教學實驗。網站本身即是敘事空間，玩家透過瀏覽、操作、甚至「破壞」網頁來推進故事。<sup style="color:#0645ad;font-size:10px;">[需要引用]</sup>
+            </li>
+          </ul>
+
+          <div class="toc" style="margin: 20px 0; padding: 12px 16px; background: #f8f9fa; border: 1px solid #a2a9b1; font-size: 13px; max-width: 500px;">
+            <strong>網頁解謎的常見入口點</strong>
+            <ul style="margin: 8px 0 0 16px; line-height: 2;">
+              <li>頁面原始碼中的 HTML 註解 <code>&lt;!-- --&gt;</code></li>
+              <li>幾乎不可見的低對比度文字元素</li>
+              <li>偽裝成正常錯誤的 <code>404</code>、<code>403</code> 頁面</li>
+              <li>瀏覽器開發者工具中的控制台輸出</li>
+              <li>網站的 <code>robots.txt</code>、<code>sitemap.xml</code> 等元資料檔案</li>
+              <li><code>localStorage</code> 或 <code>sessionStorage</code> 中儲存的隱藏狀態</li>
+            </ul>
+          </div>
+
+          <p>資深 ARG 研究者指出，<strong>網頁解謎型 ARG 的核心體驗在於「懷疑一切」</strong>——任何看似正常的網站元素都可能是精心設計的線索。<span id="meta-hint" style="color:#f0f0f0;font-size:11px;" title="包括這個網站。">包括那些你認為自己只是「在讀一篇百科」的時候。</span></p>
+
+          <h2 id="see-also">參見</h2>
+          <hr>
+          <ul class="see-also-list">
+            <!-- 角色扮演遊戲 → 404 -->
+            <li><a href="404.html" id="link-rpg">角色扮演遊戲</a></li>
+            <li><a href="nonet.html">密室逃脫</a></li>
+            <li><a href="nonet.html">侵入式虛擬實境</a></li>
+            <!-- 隱藏的關卡連結將在點擊廣告關閉後動態插入或顯示在這裡 -->
+            <li id="secret-link-item" class="hidden-clue">
+              <a href="waki_demon.html" target="_blank" rel="noopener noreferrer" class="glitch-link"
+                data-text="【waki demon】">【waki demon】</a>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <footer class="wiki-footer">
+        <ul class="footer-info">
+          <li> 本頁面最後修改於 2026年6月4日 (星期四) 14:00。</li>
+          <li>本站的文字內容採用創用CC 姓名標示-相同方式分享授權。</li>
+          <li
+            style="margin-top:12px;padding-top:8px;border-top:1px dashed #ccc;color:#aaa;font-size:11px;font-style:italic;">
+            ⚠ 系統通知：本頁面偵測到 <strong style="color:#bbb;">1 個未經授權的覆蓋元素</strong>正在遮蔽部分內容。如需檢視完整頁面，請先<span
+              style="color:#999;">清除所有浮動干擾物</span>。</li>
+          <!-- 隱藏警告：不要關閉此頁面 -->
+          <li style="margin-top:6px;color:#e8e8e8;font-size:10px;letter-spacing:0.5px;user-select:none;" title="你在看什麼？">本頁面包含尚未載入完畢的<span style="color:#e8e8e8;">動態資料流</span>，關閉將導致<span style="color:#e8e8e8;">進度遺失</span>。建議保持此頁面持續開啟。</li>
+        </ul>
+      </footer>
+    </main>
+  </div>
+
+  <!-- 惱人的彈窗廣告 (浮動在右下角) -->
+  <div id="annoying-ad" class="ad-popup">
+    <div class="ad-header">
+      <span class="ad-title">🎁 限時超級好康！</span>
+      <button id="ad-close-btn" class="ad-close-btn" title="關閉廣告">&times;</button>
+    </div>
+    <div class="ad-body">
+      <p class="ad-promo">恭喜您！您是本站第 <strong>999,999</strong> 位訪客！</p>
+      <p class="ad-sub">免費領取 <strong>MacBook Pro 16"</strong> 或 <strong>神秘大獎</strong>！</p>
+      <button class="ad-click-btn">立即點選領取！</button>
+      <p class="ad-disclaimer">*需同意本站的異常使用條款。本站無毒，請安心點擊。</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // 搜尋欄：按 Enter 或點擊搜尋鈕 → nonet
+    const si = document.getElementById('main-search-input');
+    const sb = document.getElementById('main-search-btn');
+    sb.addEventListener('click', () => location.href = 'nonet.html');
+    si.addEventListener('keydown', e => { if (e.key === 'Enter') location.href = 'nonet.html'; });
+
+    // ── 控制台隱藏 ARG 訊息 ──
+    console.log(
+      '%c[SYSTEM]%c 偵測到新連線。本頁面正在進行即時資料監控。',
+      'color: #ff4d4f; font-weight: bold; font-size: 13px;',
+      'color: #aaa; font-size: 12px;'
+    );
+    console.warn(
+      '%c⚠ 警告%c\n本頁面連結至一個不穩定的外部資料節點。\n強制中斷連線（關閉分頁）可能導致部分節點資料永久損毀。\n建議在完成資料核驗前保持此頁面開啟。',
+      'color: #ff7d00; font-weight: bold; font-size: 13px;',
+      'color: #ccc; font-size: 11px; line-height: 1.6;'
+    );
+
+    // ── 關閉頁面警告（beforeunload） ──
+    window.addEventListener('beforeunload', (e) => {
+      // 只有在廣告已被關閉（waki_demon 線索已觸發）後才啟用警告
+      // 避免干擾一般訪客；進入遊戲的玩家才需要這個警示
+      if (localStorage.getItem('researchProjectTriggered') === 'true') {
+        e.preventDefault();
+        // 現代瀏覽器不顯示自定義文字，但仍會跳出確認對話框
+        e.returnValue = '';
+      }
+    });
+
+    // ── 開發者快速重設：Ctrl + Shift + R ──
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+        e.preventDefault();
+        if (confirm('【開發者模式】確定要清除所有遊戲進度並重設？')) {
+          localStorage.clear();
+          alert('遊戲進度已重設！');
+          window.location.reload();
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I̸ ̸S̸E̸E̸ ̸Y̸O̸U̸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #000000;
+      color: #ff4d4f;
+      font-family: 'Noto Sans TC', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    /* 眼睛的包裝容器，用來做垂直眨眼動畫 */
+    .eye-wrapper {
+      animation: eye-blink 5s infinite ease-in-out;
+      transform-origin: center;
+    }
+
+    /* 經典 CSS 旋轉方形眼眶 */
+    .creepy-eye {
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, #f0f0f0 30%, #8a8a8a 80%, #303030 100%);
+      border-radius: 75% 0; /* 左右圓角，上下尖角 */
+      transform: rotate(45deg); /* 旋轉 45 度形成眼瞼形狀 */
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 50px rgba(255, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 6px solid #4a0000;
+    }
+
+    /* 紅色虹膜 (反向旋轉以保持正向) */
+    .iris {
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, #ff3333 10%, #aa0000 60%, #4a0000 100%);
+      border-radius: 50%;
+      transform: rotate(-45deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.9), inset 0 0 15px rgba(0, 0, 0, 0.6);
+      position: relative;
+      animation: eye-look 6s infinite ease-in-out;
+    }
+
+    /* 黑色瞳孔 */
+    .pupil {
+      width: 55px;
+      height: 55px;
+      background: #000000;
+      border-radius: 50%;
+      box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.8);
+      animation: pupil-dilate 3s infinite alternate ease-in-out;
+    }
+
+    /* 眼睛反光效果 */
+    .reflection {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    /* 眨眼動畫 */
+    @keyframes eye-blink {
+      0%, 95%, 100% {
+        transform: scaleY(1);
+      }
+      97.5% {
+        transform: scaleY(0.03); /* 快速閉眼 */
+      }
+    }
+
+    /* 瞳孔收縮動畫 */
+    @keyframes pupil-dilate {
+      0% {
+        transform: scale(0.75);
+      }
+      100% {
+        transform: scale(1.25); /* 盯著玩家看時瞳孔放大 */
+      }
+    }
+
+    /* 眼珠轉動掃描動畫 */
+    @keyframes eye-look {
+      0%, 100% { transform: translate(0, 0) rotate(-45deg); }
+      15% { transform: translate(-15px, 8px) rotate(-45deg); }
+      30% { transform: translate(15px, -8px) rotate(-45deg); }
+      45% { transform: translate(-8px, -12px) rotate(-45deg); }
+      60% { transform: translate(12px, 12px) rotate(-45deg); }
+      75% { transform: translate(0px, -15px) rotate(-45deg); }
+      90% { transform: translate(-10px, 0px) rotate(-45deg); }
+    }
+
+    /* 警告文字樣式 */
+    .eye-text {
+      font-size: 24px;
+      letter-spacing: 6px;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255, 77, 79, 0.8);
+      animation: text-glitch 0.4s infinite alternate;
+    }
+
+    @keyframes text-glitch {
+      0% { transform: translate(0, 0); text-shadow: 2px 0 0 red, -2px 0 0 cyan; }
+      100% { transform: translate(-1px, 1px); text-shadow: -2px 0 0 red, 2px 0 0 cyan; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="eye-wrapper">
+      <div class="creepy-eye">
+        <div class="iris">
+          <div class="reflection"></div>
+          <div class="pupil"></div>
+        </div>
+      </div>
+    </div>
+    <div class="eye-text">W̵A̸T̶C̵H̸I̸N̶G̵ ̵Y̸O̸U̶</div>
+  </div>
+</body>
+</html>
